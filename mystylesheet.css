@@ -1,0 +1,142 @@
+
+/* The side navigation menu */
+.sidenav {
+ height: 100%; /* 100% Full-height */
+ width: 0; /* 0 width - change this with JavaScript */
+ position: fixed; /* Stay in place */
+ z-index: 1; /* Stay on top */
+ top: 0;
+ left: 0;
+ background-color: #111; /* Black*/
+ overflow-x: hidden; /* Disable horizontal scroll */
+ padding-top: 60px; /* Place content 60px from the top */
+ transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+ padding: 30px 8px 20px 10px;
+ font-family: 'Avenir';
+ font-weight: 200;
+ text-decoration: none;
+ font-size: 25px;
+ color: #818181;
+ display: block;
+ transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+ color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+ position: absolute;
+ top: 0;
+ right: 25px;
+ margin-left: 50px;
+}
+
+.submenu a {
+  padding: 10px 8px 10px 5px;
+  font-family: 'Avenir';
+  font-weight: 200;
+  text-decoration: none;
+  font-size: 15px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+ .sidenav {padding-top: 15px;}
+ .sidenav a {font-size: 18px;}
+}
+
+#menu_link {
+  padding: 5px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-family: 'Avenir';
+  font-weight: 700;
+  font-size: 20px;
+  /*border: 10px solid black;*/
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  cursor: pointer;
+}
+#menu_link_shadow {
+  opacity: 0;
+  padding: 5px;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-family: 'Avenir';
+  font-weight: 700;
+  font-size: 20px;
+  color: red;
+  /*border: 10px solid black;*/
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  cursor: pointer;
+}
+
+/*section {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+}*/
+section .detail {
+  display: fixed;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/*
+section h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}*/
+html, body {
+    /*border: 10px solid black;*/
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+#sidebar_wave {
+  position: absolute;
+  transform: rotate(90deg);
+  height: 100%;
+  width: 100%;
+}
+h1 {
+  text-align: center;
+  padding: 5px;
+  left: 10px;
+  top: 10px;
+  font-family: 'Avenir';
+  font-weight: 700;
+  font-size: 50px;
+}
+p {
+  font-family: 'Avenir';
+  padding: 5px;
+  font-weight: 300;
+  font-size: 17px;
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+}
