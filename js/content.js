@@ -38,6 +38,66 @@ document.getElementById('projectsD').appendChild(projectsHeader);
 
 /*PHOTOS*/
 
-var photosHeader = document.createElement('h1');
+var photosHeader = document.createElement('h1'); // header
 $(photosHeader).text("PHOTOGRAPHY");
 document.getElementById('photosD').appendChild(photosHeader);
+
+var gallery = new Array();
+var sl = new Array();
+// create gallery array
+gallery = ["photos/two_by_two.jpeg", "photos/airplane.jpeg","photos/apartment.jpeg","photos/unripe.jpeg",
+"photos/mum_dad.jpeg","photos/self_portrait.jpeg","photos/curves.jpeg","photos/sea.jpeg",
+"photos/woods.jpeg","photos/apartment_2.jpeg"]
+// create colours array
+colours = ['#97C4D9','#040500','#FFFFFF','#779F6A',
+'#DEBF8F', '#727E7A','#AEADAD', '#627484',
+'#EB964F', "#8B6172"];
+document.getElementById('photosD').style.background = colours[0]; // assign initial bg colour
+document.getElementById('photosD').style.transition = '0.5s all'
+var viewer = document.createElement('div');
+viewer.classList.add("slider");
+
+for (var i = 0; i < gallery.length; i++) {
+  sl[i] = document.createElement('div');
+  sl[i].classList.add("slide");
+  $(sl[i]).append("<img id ='sl'"+i+" class='slide_img' src='"+gallery[i]+"'>");
+  viewer.appendChild(sl[i]);
+  var m = document.getElementById('sl'+i);
+}
+
+document.getElementById('photosD').appendChild(viewer);
+window.addEventListener('resize', function() {
+  scrollw = viewer.offsetWidth - 50;
+}, false);
+
+var scrollw = viewer.offsetWidth - 50; // add 50px buffer so color change can occur
+var totalItems = $('.slide').length;
+//console.log(totalItems);
+
+function dynamicTextColour(col, item) {
+  if (col.isLight() == false) {
+    for (var i = 0; i < item.length; i++) {
+      item[i].style.color = 'white'
+    }
+  }
+  else {
+    for (var i = 0; i < item.length; i++) {
+      item[i].style.color = 'black'
+    }
+  }
+}
+
+// analyse initial bg colour and adjust textcolour accordingly
+dynamicTextColour(tinycolor(colours[0]),[photosHeader,document.getElementById("menu_link")]);
+
+// scroll event function
+$(function() {
+   $(viewer).scroll(function () {
+      var n = Math.ceil($(this).scrollLeft()/scrollw);
+      console.log('n =' + n);
+      document.getElementById('photosD').style.background = colours[n-1];
+      var colour_an = tinycolor(colours[n-1])
+      dynamicTextColour(colour_an, [photosHeader,document.getElementById("menu_link")]);
+
+   });
+});
