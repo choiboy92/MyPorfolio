@@ -12,6 +12,7 @@ let sh = document.body.clientHeight;
 function generateCanvas(section) {
     //console.log("Generating canvas");
     canvas = document.createElement('canvas');
+    canvas.id = section +'Can';
     body = document.createElement('body');
     body.appendChild(canvas);
     document.getElementById(section).appendChild(body);

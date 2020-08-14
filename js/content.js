@@ -3,12 +3,19 @@
 /* HTML CONTENT TO BE ADDED*/
 
 /* ABOUT */
+function enterAbout() {
+  console.log('section entered');
+  show_icon(github_img,1);
+  show_icon(insta_img,-1);
+}
 var aboutHeader = document.createElement('h1');
 $(aboutHeader).text("ABOUT");
+//var aboutOverlay = document.createElement
 document.getElementById('aboutD').appendChild(aboutHeader);
 var elemP1 = document.createElement('p');
 var elemP2 = document.createElement('p');
 var elemP3 = document.createElement('p');
+//document.getElementById('aboutD').style.position = 'absolute';
 //elemP.style.textAlign = "center";
 $(elemP1).text("My name is Junho Choi and I am currently a 3rd year undergraduate Mechanical Engineering student at Imperial College London.");
 
@@ -20,6 +27,67 @@ $(elemP3).text("This website is dedicated to collating these projects and keepin
 document.getElementById('aboutD').appendChild(elemP1);
 document.getElementById('aboutD').appendChild(elemP2);
 document.getElementById('aboutD').appendChild(elemP3);
+/*var canvA = document.getElementById('canvA');
+var context = canvA.getContext("2d");
+canvA.style.backgroundColor = "blue";
+canvA.style.height = "100px";*/
+//canvA.style.opacity = '0.5';
+//context.fillRect(0, 0, canvA.width, canvA.height);
+
+var sns = document.createElement('div');
+sns.style.paddingTop = '80px';
+sns.style.height = '70px';
+sns.style.width = '40vw';
+sns.style.margin = '0 auto';
+var github_img = new Image();
+github_img.src = 'img/icons8-github.svg';
+github_img.style.height = '100%';
+github_img.id = 'gitgo';
+//$(github_img).wrap($("<a>").attr("href", "https://github.com/choiboy92"));
+//$(github_img).wrap("<a href=\"https://github.com/choiboy92\"></a>");
+
+var insta_img = new Image();
+insta_img.src = 'img/icons8-instagram.svg';
+insta_img.style.float = 'right';
+insta_img.style.height = '100%';
+insta_img.id = 'instago';
+//$("#instago").wrap("<a href='https://www.instagram.com/junho.what/?hl=en'></a>");
+
+sns.appendChild(github_img);
+sns.appendChild(insta_img);
+document.getElementById('aboutD').appendChild(sns);
+
+
+function show_icon(name, i) {
+  var w = sns.offsetWidth;
+  anime({
+    targets: name,
+    translateX: i*((w/2)-70), // -70px to account for width of icon
+    easing: 'easeInOutSine',
+    duration: 1000,
+    //autoplay: true,
+    direction: 'alternate',
+    //loop: true,
+  });
+};
+sns_hover(github_img);
+sns_hover(insta_img);
+
+function sns_hover(name) {
+  name.addEventListener('mouseenter',function() {
+    name.style.cursor = 'pointer';
+    anime({
+      targets: name,
+      easing: 'linear',
+      opacity: [.2,1],
+      scale:[1, 1.2],
+      duration: 800,
+      direction: 'alternate',
+    });
+  });
+}
+
+
 
 
 /*PROJECTS*/
