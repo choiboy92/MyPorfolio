@@ -3,10 +3,16 @@
 
 
 /* ABOUT */
-var currentTabId;
+var currentTabId = 'homeD'; // Set initial currentTabId
 var linklabel = document.getElementsByClassName('linklabel');
-$('.linklabel').on("click", function() {
-  console.log(currentTabId);
+
+
+// Section link click event function
+function enterTab(tabtxt) {
+  $('#'+currentTabId).toggleClass('detail-active');
+  currentTabId = (tabtxt+'D'); // update currentTabId
+  $('#'+currentTabId).toggleClass('detail-active'); //toggle css for new active tab
+  //Carry out individual functions depending on which section
   if (currentTabId =='homeD') {
     document.body.style.background = '#BBD1EA';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
@@ -15,34 +21,24 @@ $('.linklabel').on("click", function() {
     document.body.style.background = '#FEC601';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
   }
-  else if (currentTabId == 'photo-graphyD') {
-    document.body.style.backgroundColor = colours[0];
+  else if (currentTabId == 'projectsD') {
+    document.body.style.background = '#84BC9C';
+    dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
   }
-
-});
-function enterTab(tabtxt) {
-  $('#'+currentTabId).toggleClass('detail-active');
-  currentTabId = (tabtxt+'D');
-  //$('.detail').css('display','none');
-  //document.getElementById(currentTabId).style.display = 'block';
-  ctx.clearRect(0, 0, sw, sh);
-  ctx.beginPath();
-  //$(this).addClass('active');
-  $('#'+currentTabId).toggleClass('detail-active');
-  /*show_icon(github_img,1);
-  show_icon(insta_img,-1);*/
+  else if (currentTabId == 'photo-graphyD') {
+    document.body.style.backgroundColor = colours[n-1];
+    dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
+  }
 }
 
 var aboutHeader = document.createElement('h1');
 $(aboutHeader).text("ABOUT");
-//var aboutOverlay = document.createElement
 
 document.getElementById('aboutD').appendChild(aboutHeader);
 var elemP1 = document.createElement('p');
 var elemP2 = document.createElement('p');
 var elemP3 = document.createElement('p');
-//document.getElementById('aboutD').style.position = 'absolute';
-//elemP.style.textAlign = "center";
+
 $(elemP1).text("My name is Junho Choi and I am currently a 3rd year undergraduate Mechanical Engineering student at Imperial College London.");
 
 $(elemP2).text("Despite my degree, I have a keen interest in design, machine learning, front-end development and even computer vision. "
@@ -71,7 +67,6 @@ insta_img.src = 'img/icons8-instagram.svg';
 insta_img.style.float = 'right';
 insta_img.style.height = '100%';
 insta_img.id = 'instago';
-//$("#instago").wrap("<a href='https://www.instagram.com/junho.what/?hl=en'></a>");
 
 sns.appendChild(github_img);
 sns.appendChild(insta_img);
@@ -194,14 +189,11 @@ function dynamicTextColour(col, item) {
 }
 
 
-
-// analyse initial bg colour and adjust textcolour accordingly
-//dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
-
-// scroll event function
+// Horizontal scroll event function
+var n = 1; // set initial value to n
 $(function() {
    $(viewer).scroll(function () {
-      var n = Math.ceil($(this).scrollLeft()/scrollw);
+      n = Math.ceil($(this).scrollLeft()/scrollw); //update n
       console.log('n =' + n);
       if (n ==0) {
         n=1;
