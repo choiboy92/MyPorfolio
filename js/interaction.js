@@ -12,7 +12,7 @@ let sh = document.body.clientHeight;
 function generateCanvas(section) {
     //console.log("Generating canvas");
     canvas = document.createElement('canvas');
-    canvas.id = section +'Can';
+    canvas.id = 'Can';
     body = document.createElement('body');
     body.appendChild(canvas);
     document.getElementById(section).appendChild(body);
@@ -182,19 +182,19 @@ function moveOut(element,time) {
   // add an event listener to the element
   $(canvas).on(tap, handler);
 }
-/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px
 function openNav() {
   document.getElementById("mySidenav").style.width = "175px";
   document.getElementById("main").style.marginLeft = "0";
   //document.getElementById("main").style.marginLeft = "250px";
 
-}
+}*/
 
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
-}
+}*/
 
 function slideup(section) {
   $(section).click(function(){
@@ -202,17 +202,12 @@ function slideup(section) {
   });
 };
 
-function gototab() {
-  window.location.href = '#home';
-  window.location.reload();
-}
-
 /*DRAW CANVAS CONTENT*/
 init();
 
 /*HOVER ANIMATIONS*/
 // create close button hover animation
-var buttonEl = document.querySelector('.closebtn');
+/*var buttonEl = document.querySelector('.closebtn');
 function ani_closebtn(scale, duration, elasticity) {
   anime.remove(buttonEl);
   anime({
@@ -224,10 +219,10 @@ function ani_closebtn(scale, duration, elasticity) {
 function enterButton() { ani_closebtn(1.5, 300) };
 function leaveButton() { ani_closebtn(1.0, 300) };
 buttonEl.addEventListener('mouseenter', enterButton, false);
-buttonEl.addEventListener('mouseleave', leaveButton, false);
+buttonEl.addEventListener('mouseleave', leaveButton, false);*/
 
 // create hover animation for menu
-var menulink = document.querySelector('#menu_link');
+/*var menulink = document.querySelector('#menu_link');
 var menulink_s = document.querySelector('#menu_link_shadow');
 menulink.addEventListener('mouseenter', function() {
   anime.remove(menulink_s);
@@ -244,13 +239,18 @@ menulink.addEventListener('mouseleave', function() {
     opacity: 0,
     duration: 3000
   });
-}, false);
+}, false);*/
 
 
 //WINDOW LOAD SECTION
 // Window load fires when the document's window is ready for presentation
 // once content is loaded, this will run
 window.onload = () => {
+  window.location.href = '#home';
+  $('.sidenav').css('width','100px');
+  // analyse initial bg colour and adjust textcolour accordingly
+  initCol = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+  dynamicTextColour(tinycolor(initCol),[photosHeader,linklabel]);
 
   //let total = leon_intro.drawing.length;
   //console.log(total);

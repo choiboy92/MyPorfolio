@@ -1,16 +1,42 @@
 // HTML CONTENT JS FILE
-
 /* HTML CONTENT TO BE ADDED*/
 
+
 /* ABOUT */
-function enterAbout() {
-  console.log('section entered');
-  show_icon(github_img,1);
-  show_icon(insta_img,-1);
+var currentTabId;
+var linklabel = document.getElementsByClassName('linklabel');
+$('.linklabel').on("click", function() {
+  console.log(currentTabId);
+  if (currentTabId =='homeD') {
+    document.body.style.background = '#BBD1EA';
+    dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
+  }
+  else if (currentTabId == 'aboutD') {
+    document.body.style.background = '#FEC601';
+    dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
+  }
+  else if (currentTabId == 'photo-graphyD') {
+    document.body.style.backgroundColor = colours[0];
+  }
+
+});
+function enterTab(tabtxt) {
+  $('#'+currentTabId).toggleClass('detail-active');
+  currentTabId = (tabtxt+'D');
+  //$('.detail').css('display','none');
+  //document.getElementById(currentTabId).style.display = 'block';
+  ctx.clearRect(0, 0, sw, sh);
+  ctx.beginPath();
+  //$(this).addClass('active');
+  $('#'+currentTabId).toggleClass('detail-active');
+  /*show_icon(github_img,1);
+  show_icon(insta_img,-1);*/
 }
+
 var aboutHeader = document.createElement('h1');
 $(aboutHeader).text("ABOUT");
 //var aboutOverlay = document.createElement
+
 document.getElementById('aboutD').appendChild(aboutHeader);
 var elemP1 = document.createElement('p');
 var elemP2 = document.createElement('p');
@@ -27,12 +53,6 @@ $(elemP3).text("This website is dedicated to collating these projects and keepin
 document.getElementById('aboutD').appendChild(elemP1);
 document.getElementById('aboutD').appendChild(elemP2);
 document.getElementById('aboutD').appendChild(elemP3);
-/*var canvA = document.getElementById('canvA');
-var context = canvA.getContext("2d");
-canvA.style.backgroundColor = "blue";
-canvA.style.height = "100px";*/
-//canvA.style.opacity = '0.5';
-//context.fillRect(0, 0, canvA.width, canvA.height);
 
 var sns = document.createElement('div');
 sns.style.paddingTop = '80px';
@@ -108,7 +128,7 @@ document.getElementById('projectsD').appendChild(projectsHeader);
 
 var photosHeader = document.createElement('h1'); // header
 $(photosHeader).text("PHOTOGRAPHY");
-document.getElementById('photosD').appendChild(photosHeader);
+document.getElementById('photo-graphyD').appendChild(photosHeader);
 
 var gallery = new Array();
 var sl = new Array();
@@ -120,8 +140,9 @@ gallery = ["photos/two_by_two.jpeg", "photos/airplane.jpeg","photos/apartment.jp
 colours = ['#97C4D9','#040500','#FFFFFF','#779F6A',
 '#DEBF8F', '#727E7A','#AEADAD', '#627484',
 '#EB964F', "#8B6172"];
-document.getElementById('photosD').style.background = colours[0]; // assign initial bg colour
-document.getElementById('photosD').style.transition = '0.5s all'
+//document.getElementById('photo-graphyD').style.background = colours[0]; // assign initial bg colour
+document.body.style.transition = 'all 1s';
+document.getElementById('photo-graphyD').style.transition = '0.5s all'
 var viewer = document.createElement('div');
 viewer.classList.add("slider");
 
@@ -133,39 +154,62 @@ for (var i = 0; i < gallery.length; i++) {
   var m = document.getElementById('sl'+i);
 }
 
-document.getElementById('photosD').appendChild(viewer);
+document.getElementById('photo-graphyD').appendChild(viewer);
 window.addEventListener('resize', function() {
   scrollw = viewer.offsetWidth - 50;
 }, false);
 
 var scrollw = viewer.offsetWidth - 50; // add 50px buffer so color change can occur
 var totalItems = $('.slide').length;
+
+
 //console.log(totalItems);
 
 function dynamicTextColour(col, item) {
+  console.log('Dynamic Text Color func callled');
   if (col.isLight() == false) {
     for (var i = 0; i < item.length; i++) {
-      item[i].style.color = 'white'
+      if (item[i].length >= 1) {
+        for (var n = 0; n < item[i].length; n++) {
+          item[i][n].style.color = 'white';
+        }
+      }
+      else {
+        item[i].style.color = 'white';
+      }
     }
   }
   else {
     for (var i = 0; i < item.length; i++) {
-      item[i].style.color = 'black'
+      if (item[i].length >= 1) {
+        for (var n = 0; n < item[i].length; n++) {
+          item[i][n].style.color = 'black';
+        }
+      }
+      else {
+        item[i].style.color = 'black';
+      }
     }
   }
 }
 
+
+
 // analyse initial bg colour and adjust textcolour accordingly
-dynamicTextColour(tinycolor(colours[0]),[photosHeader,document.getElementById("menu_link")]);
+//dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
 
 // scroll event function
 $(function() {
    $(viewer).scroll(function () {
       var n = Math.ceil($(this).scrollLeft()/scrollw);
       console.log('n =' + n);
-      document.getElementById('photosD').style.background = colours[n-1];
+      if (n ==0) {
+        n=1;
+      }
+      //document.getElementById('photo-graphyD').style.background = colours[n-1];
+      document.body.style.background = colours[n-1];
       var colour_an = tinycolor(colours[n-1])
-      dynamicTextColour(colour_an, [photosHeader,document.getElementById("menu_link")]);
+      dynamicTextColour(colour_an, [photosHeader,linklabel]);
 
    });
 });
