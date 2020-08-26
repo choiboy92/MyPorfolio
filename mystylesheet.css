@@ -154,6 +154,7 @@ h1 {
   align-items: center;
   padding: 5px;
   margin-top: 0;
+  margin-bottom: 10px;
   font-family: 'Avenir';
   font-weight: 700;
   font-size: 50px;
@@ -203,4 +204,27 @@ canvas {
   position: fixed;
   /*z-index: 100;*/
   /*position: absolute;*/
+}
+#projectWrapper {
+  margin-left: 80px;
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.projectDiv {
+  text-align: center;
+  border-radius: 5px;
+  flex: 1 1 300px;
+  opacity: 0.5;
+  /*width: 100px;*/
+  /*min-width: 300px;*/
+  height: 280px;
+  margin: 10px;
+  background-color: gray;
+  /*transition: all 1s ease 10s;*/
+}
+.projectDiv:hover {
+  opacity: 1;
+  transition: all 0.5s;
 }
