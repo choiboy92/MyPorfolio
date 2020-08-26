@@ -130,9 +130,11 @@ document.getElementById('projectsD').appendChild(Pwrapper);
 
 
 for (var i = 0; i < 4; i++) {
+  
   var newPdiv = document.createElement('div');
   newPdiv.className = 'projectDiv';
   newPdiv.id = 'projectDiv'+i;
+
   //Add text for the individual project divs
   var txt = document.createElement('p')
   txt.style.width = 'auto';
