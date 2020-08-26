@@ -3,7 +3,7 @@
 
 
 /* ABOUT */
-var currentTabId = 'homeD'; // Set initial currentTabId
+var currentTabId; // Initialise global currentTabId
 var linklabel = document.getElementsByClassName('linklabel');
 
 /*function drawRect() {
@@ -16,27 +16,31 @@ var linklabel = document.getElementsByClassName('linklabel');
 }*/
 // Section link click event function
 function enterTab(tabtxt) {
-  $('#'+currentTabId).toggleClass('detail-active');
-  currentTabId = (tabtxt+'D'); // update currentTabId
-  $('#'+currentTabId).toggleClass('detail-active'); //toggle css for new active tab
+  // turn off active css for detail divs and linklabels
+  $('#'+currentTabId+'D').toggleClass('detail-active');
+  $('#'+currentTabId+'label').toggleClass('linklabel_active');
+  currentTabId = tabtxt; // update currentTabId
+  $('#'+currentTabId+'D').toggleClass('detail-active'); //toggle detail css for new active tab
+  $('#'+currentTabId+'label').toggleClass('linklabel_active');
+
   //Carry out individual functions depending on which section
-  if (currentTabId =='homeD') {
+  if (currentTabId =='home') {
     document.body.style.background = '#BBD1EA';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
   }
-  else if (currentTabId == 'aboutD') {
+  else if (currentTabId == 'about') {
     document.body.style.background = '#FEC601';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
     //drawRect();
 
   }
-  else if (currentTabId == 'projectsD') {
+  else if (currentTabId == 'projects') {
     //Beign slideReveal animation for project div content
     slideReveal(document.getElementsByClassName('projectDiv'))
     document.body.style.background = '#84BC9C';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
   }
-  else if (currentTabId == 'photo-graphyD') {
+  else if (currentTabId == 'photo-graphy') {
     console.log(n-1);
     document.body.style.backgroundColor = colours[n-1];
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
@@ -130,7 +134,7 @@ document.getElementById('projectsD').appendChild(Pwrapper);
 
 
 for (var i = 0; i < 4; i++) {
-  
+
   var newPdiv = document.createElement('div');
   newPdiv.className = 'projectDiv';
   newPdiv.id = 'projectDiv'+i;
@@ -206,7 +210,6 @@ var totalItems = $('.slide').length;
 //console.log(totalItems);
 
 function dynamicTextColour(col, item) {
-  console.log('Dynamic Text Color func callled');
   if (col.isLight() == false) {
     for (var i = 0; i < item.length; i++) {
       if (item[i].length >= 1) {

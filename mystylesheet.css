@@ -34,7 +34,7 @@ ul {
 }
 
 /* When you mouse over the navigation links, change their color */
-.linklabel:hover {
+.linklabel_active, .linklabel:hover {
  color: #FE4A49!important;
  text-shadow: 3px 0px 0px black;
  font-weight: 800;
