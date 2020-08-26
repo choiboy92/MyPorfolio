@@ -29,9 +29,10 @@ function enterTab(tabtxt) {
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
     //drawRect();
 
-
   }
   else if (currentTabId == 'projectsD') {
+    //Beign slideReveal animation for project div content
+    slideReveal(document.getElementsByClassName('projectDiv'))
     document.body.style.background = '#84BC9C';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
   }
@@ -121,17 +122,39 @@ function sns_hover(name) {
 var projectsHeader = document.createElement('h1');
 $(projectsHeader).text("PROJECTS");
 document.getElementById('projectsD').appendChild(projectsHeader);
+
+//Create wrapper flex box for project content
 var Pwrapper = document.createElement('div');
 Pwrapper.id = 'projectWrapper';
 document.getElementById('projectsD').appendChild(Pwrapper);
 
 
-for (var i = 0; i < 6; i++) {
+for (var i = 0; i < 4; i++) {
   var newPdiv = document.createElement('div');
   newPdiv.className = 'projectDiv';
   newPdiv.id = 'projectDiv'+i;
+  //Add text for the individual project divs
+  var txt = document.createElement('p')
+  txt.style.width = 'auto';
+  $(txt).text('This is the div for project '+(i+1));
+  newPdiv.appendChild(txt);
+
+  // Add divs to the main wrapper div
   document.getElementById('projectWrapper').appendChild(newPdiv);
 }
+
+// Animation for slideReveal
+function slideReveal(targ) {
+  anime({
+    targets: targ,
+    easing: 'easeInOutSine',
+    duration:1500,
+    delay: function(el, i) {
+      return 500 + (200 * i);
+    },
+    translateY: [sh,0]
+  });
+} ;
 
 /*CODING*/
 
