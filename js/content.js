@@ -6,7 +6,14 @@
 var currentTabId = 'homeD'; // Set initial currentTabId
 var linklabel = document.getElementsByClassName('linklabel');
 
-
+/*function drawRect() {
+  requestAnimationFrame(drawRect);
+  //ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.clearRect(0, 0, sw, sh);
+  ctx.beginPath();
+  ctx.rect(20, 20, 150, 100);
+  ctx.stroke();
+}*/
 // Section link click event function
 function enterTab(tabtxt) {
   $('#'+currentTabId).toggleClass('detail-active');
@@ -20,12 +27,16 @@ function enterTab(tabtxt) {
   else if (currentTabId == 'aboutD') {
     document.body.style.background = '#FEC601';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
+    //drawRect();
+
+
   }
   else if (currentTabId == 'projectsD') {
     document.body.style.background = '#84BC9C';
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
   }
   else if (currentTabId == 'photo-graphyD') {
+    console.log(n-1);
     document.body.style.backgroundColor = colours[n-1];
     dynamicTextColour(tinycolor(document.body.style.background),[photosHeader,linklabel]);
   }
@@ -110,8 +121,17 @@ function sns_hover(name) {
 var projectsHeader = document.createElement('h1');
 $(projectsHeader).text("PROJECTS");
 document.getElementById('projectsD').appendChild(projectsHeader);
+var Pwrapper = document.createElement('div');
+Pwrapper.id = 'projectWrapper';
+document.getElementById('projectsD').appendChild(Pwrapper);
 
 
+for (var i = 0; i < 6; i++) {
+  var newPdiv = document.createElement('div');
+  newPdiv.className = 'projectDiv';
+  newPdiv.id = 'projectDiv'+i;
+  document.getElementById('projectWrapper').appendChild(newPdiv);
+}
 
 /*CODING*/
 
