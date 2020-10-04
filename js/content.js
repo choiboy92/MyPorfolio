@@ -133,21 +133,55 @@ Pwrapper.id = 'projectWrapper';
 document.getElementById('projectsD').appendChild(Pwrapper);
 
 
+
+
+var expandDivId=null;
 for (var i = 0; i < 4; i++) {
 
   var newPdiv = document.createElement('div');
   newPdiv.className = 'projectDiv';
   newPdiv.id = 'projectDiv'+i;
-
   //Add text for the individual project divs
-  var txt = document.createElement('p')
-  txt.style.width = 'auto';
-  $(txt).text('This is the div for project '+(i+1));
-  newPdiv.appendChild(txt);
 
+  $(newPdiv).click(function() {
+    console.log(this.id);
+    $(expandDivId).css('width','20%');
+    $(expandDivId).css('opacity','0.5');
+    expandDivId = '#'+this.id;
+    $(expandDivId).css('width','100%');
+    $(expandDivId).css('opacity','1');
+  })
   // Add divs to the main wrapper div
   document.getElementById('projectWrapper').appendChild(newPdiv);
+
 }
+
+var txt0 = document.createElement('h1')
+txt0.className = 'projectTitle';
+txt0.style.width = 'auto';
+$(txt0).text('NeuToy');
+document.getElementById('projectDiv0').appendChild(txt0)
+
+var txt1 = document.createElement('h1')
+txt1.className = 'projectTitle';
+txt1.style.width = 'auto';
+$(txt1).text('Present Weather NN');
+document.getElementById('projectDiv1').appendChild(txt1)
+
+var txt2 = document.createElement('h1')
+txt2.className = 'projectTitle';
+txt2.style.width = 'auto';
+$(txt2).text('Underwater Scooter');
+document.getElementById('projectDiv2').appendChild(txt2)
+
+var txt3 = document.createElement('h1')
+txt3.className = 'projectTitle';
+txt3.style.width = 'auto';
+$(txt3).text('Drag Race Car');
+document.getElementById('projectDiv3').appendChild(txt3)
+
+
+
 
 // Animation for slideReveal
 function slideReveal(targ) {
