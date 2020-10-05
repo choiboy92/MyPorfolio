@@ -168,6 +168,8 @@ p {
   width: 70vw;
   margin-left: auto;
   margin-right: auto;
+  text-align: justify;
+  text-justify: inter-word;
 }
 .slider {
   scroll-snap-type: x mandatory;
@@ -226,12 +228,13 @@ canvas {
   justify-content: center;
   border-radius: 5px;
   /*flex: 1 1 300px;*/
-  opacity: 0.5;
+  opacity: 1;
   /*width: 15%;*/
   min-width: 120px;
   height: auto;
   margin: 10px;
-  background-color: gray;
+  /*background-color: #03D55F;*/
+  background-color: #FE4A49;
   /*transition: all 1s ease 10s;*/
   cursor: pointer;
 }
@@ -241,9 +244,10 @@ canvas {
   margin-left: 80px;
   margin-right: 10px;
   flex: 1 1 auto;
+  border-radius: 25px;
 }
 .projectDiv:hover {
-  opacity: 1;
+  opacity: 0.5;
   transition: all 0.5s;
 }
 .projectTitle {
@@ -252,4 +256,27 @@ canvas {
   margin: 0;
   text-align: center;
   justify-content: center;
+  width: auto;
+  color: white;
+}
+.projectSlides {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.descWrapper {
+  display: flex;
+  width: 100%;
+  flex-flow: row;
+  justify-content: center;
+}
+.descHeader {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  align-items: center;
 }

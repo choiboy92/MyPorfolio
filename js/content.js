@@ -127,7 +127,22 @@ var projectsHeader = document.createElement('h1');
 $(projectsHeader).text("PROJECTS");
 document.getElementById('projectsD').appendChild(projectsHeader);
 
+var projectTitle = new Array();
+projectTitle = ['NeuToy','Present Weather NN','Underwater Scooter','Drag Race Car','Nuffield Placement']
 
+var projectRole = new Array();
+projectRole = ['Product Manager','Individual Project','Project Manager','CAD Manager','Research intern in Scientific Computing']
+
+// Array holding text for project description
+var projectDesc = new Array();
+projectDesc = ['Hello this is description for NeuToy', 'Hello this is description for Present Weather NN',
+'Hello this is description for Underwater Scooter', 'Hello this is description for Drag Race Car',
+'Hello this is description for Nuffield Placement'];
+
+var projectImg = new Array();
+projectImg = ['img for NeuToy', 'img for Present Weather NN',
+'img for Underwater Scooter', 'img for Drag Race Car',
+'img for Nuffield Placement'];
 
 //Create wrapper flex box for project content
 var Pwrapper = document.createElement('div');
@@ -149,18 +164,53 @@ projViewer.id = 'projViewer';
 var proj_sl = new Array();
 
 for (var i = 0; i < 5; i++) {
-
   var newPdiv = document.createElement('div');
   newPdiv.className = 'projectDiv';
   newPdiv.id = 'projectDiv'+i;
-  //Add text for the individual project divs
+  //Add text for the individual project headers
+  var txt = document.createElement('h1')
+  txt.className = 'projectTitle';
+  $(txt).text(projectTitle[i]);
+  newPdiv.appendChild(txt);
 
   proj_sl[i] = document.createElement('div');
   proj_sl[i].classList.add("slide");
+  proj_sl[i].classList.add("projectSlides");
   proj_sl[i].id = 'projSlides'+i
-  proj_sl[i].style.width = '100%';
-  proj_sl[i].style.backgroundColor = slide_bg[i]
-  //$(proj_sl[i]).append("<img id ='sl'"+i+" class='slide_img' src='"+gallery[i]+"'>");
+  proj_sl[i].style.backgroundColor = slide_bg[i];
+
+  var descHeader = document.createElement('div');
+  descHeader.classList.add("descHeader");
+
+  var descTitle = document.createElement('h1');
+  descTitle.style.marginLeft = '70px'
+  $(descTitle).text(projectTitle[i]);
+  descHeader.appendChild(descTitle);
+
+  var descRole = document.createElement('p');
+  descRole.style.width = 'auto';
+  descRole.style.fontStyle = 'italic';
+  descRole.style.marginLeft = '50px'
+  $(descRole).text(projectRole[i]);
+  descHeader.appendChild(descRole);
+
+  proj_sl[i].appendChild(descHeader);
+
+  var descWrapper = document.createElement('div');
+  descWrapper.classList.add("descWrapper");
+
+  var image = document.createElement('p');
+  $(image).text(projectImg[i])
+
+  var desc = document.createElement('p');
+  desc.style.margin = '10px';
+  $(desc).text(projectDesc[i])
+
+  descWrapper.appendChild(desc)
+  descWrapper.appendChild(image)
+  proj_sl[i].appendChild(descWrapper);
+
+  // Add slides to the slideviewer
   projViewer.appendChild(proj_sl[i]);
 
   $(newPdiv).click(function() {
@@ -171,43 +221,10 @@ for (var i = 0; i < 5; i++) {
     $(expandDivId).css('width','100%');
     $(expandDivId).css('opacity','1');*/
   })
-  // Add divs to the main wrapper div
+  // Add divs to the main navigation header div
   document.getElementById('projectNavHeader').appendChild(newPdiv);
 
 }
-
-var txt0 = document.createElement('h1')
-txt0.className = 'projectTitle';
-txt0.style.width = 'auto';
-$(txt0).text('NeuToy');
-document.getElementById('projectDiv0').appendChild(txt0)
-
-
-var txt1 = document.createElement('h1')
-txt1.className = 'projectTitle';
-txt1.style.width = 'auto';
-$(txt1).text('Present Weather NN');
-document.getElementById('projectDiv1').appendChild(txt1)
-
-var txt2 = document.createElement('h1')
-txt2.className = 'projectTitle';
-txt2.style.width = 'auto';
-$(txt2).text('Underwater Scooter');
-document.getElementById('projectDiv2').appendChild(txt2)
-
-var txt3 = document.createElement('h1')
-txt3.className = 'projectTitle';
-txt3.style.width = 'auto';
-$(txt3).text('Drag Race Car');
-document.getElementById('projectDiv3').appendChild(txt3)
-
-var txt4 = document.createElement('h1')
-txt4.className = 'projectTitle';
-txt4.style.width = 'auto';
-$(txt4).text('Nuffield Placement');
-document.getElementById('projectDiv4').appendChild(txt4)
-
-
 
 
 document.getElementById('projectWrapper').appendChild(projViewer);
