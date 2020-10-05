@@ -246,6 +246,7 @@ menulink.addEventListener('mouseleave', function() {
 // Window load fires when the document's window is ready for presentation
 // once content is loaded, this will run
 window.onload = () => {
+  
   window.location.href = '#home';
   $('.sidenav').css('width','100px');
   // analyse initial bg colour and adjust textcolour accordingly

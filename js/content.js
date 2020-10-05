@@ -57,7 +57,7 @@ var elemP3 = document.createElement('p');
 
 $(elemP1).text("My name is Junho Choi and I am currently a 3rd year undergraduate Mechanical Engineering student at Imperial College London.");
 
-$(elemP2).text("Despite my degree, I have a keen interest in design, machine learning, front-end development and even computer vision. "
+$(elemP2).text("Along with engineering, I have a keen interest in design, machine learning, front-end development and even computer vision. "
 + "These wide-ranging interests have lead me to take part in a variety of projects as part of my coursework, internships, and even "
 + "individual projects that I have started in my free time.");
 $(elemP3).text("This website is dedicated to collating these projects and keeping a record of the things I have been up to and enjoy.");
@@ -127,32 +127,52 @@ var projectsHeader = document.createElement('h1');
 $(projectsHeader).text("PROJECTS");
 document.getElementById('projectsD').appendChild(projectsHeader);
 
+
+
 //Create wrapper flex box for project content
 var Pwrapper = document.createElement('div');
 Pwrapper.id = 'projectWrapper';
 document.getElementById('projectsD').appendChild(Pwrapper);
 
+//Create wrapper flex box for project headers
+var PwrapperHeader = document.createElement('div');
+PwrapperHeader.id = 'projectNavHeader';
+document.getElementById('projectWrapper').appendChild(PwrapperHeader);
 
+var slide_bg = new Array();
+slide_bg = ['blue','black','green','yellow','orange']
 
+var projViewer = document.createElement('div');
+projViewer.classList.add("slider");
+projViewer.id = 'projViewer';
 
-var expandDivId=null;
-for (var i = 0; i < 4; i++) {
+var proj_sl = new Array();
+
+for (var i = 0; i < 5; i++) {
 
   var newPdiv = document.createElement('div');
   newPdiv.className = 'projectDiv';
   newPdiv.id = 'projectDiv'+i;
   //Add text for the individual project divs
 
+  proj_sl[i] = document.createElement('div');
+  proj_sl[i].classList.add("slide");
+  proj_sl[i].id = 'projSlides'+i
+  proj_sl[i].style.width = '100%';
+  proj_sl[i].style.backgroundColor = slide_bg[i]
+  //$(proj_sl[i]).append("<img id ='sl'"+i+" class='slide_img' src='"+gallery[i]+"'>");
+  projViewer.appendChild(proj_sl[i]);
+
   $(newPdiv).click(function() {
     console.log(this.id);
-    $(expandDivId).css('width','20%');
+    /*$(expandDivId).css('width','20%');
     $(expandDivId).css('opacity','0.5');
     expandDivId = '#'+this.id;
     $(expandDivId).css('width','100%');
-    $(expandDivId).css('opacity','1');
+    $(expandDivId).css('opacity','1');*/
   })
   // Add divs to the main wrapper div
-  document.getElementById('projectWrapper').appendChild(newPdiv);
+  document.getElementById('projectNavHeader').appendChild(newPdiv);
 
 }
 
@@ -161,6 +181,7 @@ txt0.className = 'projectTitle';
 txt0.style.width = 'auto';
 $(txt0).text('NeuToy');
 document.getElementById('projectDiv0').appendChild(txt0)
+
 
 var txt1 = document.createElement('h1')
 txt1.className = 'projectTitle';
@@ -180,9 +201,16 @@ txt3.style.width = 'auto';
 $(txt3).text('Drag Race Car');
 document.getElementById('projectDiv3').appendChild(txt3)
 
+var txt4 = document.createElement('h1')
+txt4.className = 'projectTitle';
+txt4.style.width = 'auto';
+$(txt4).text('Nuffield Placement');
+document.getElementById('projectDiv4').appendChild(txt4)
 
 
 
+
+document.getElementById('projectWrapper').appendChild(projViewer);
 // Animation for slideReveal
 function slideReveal(targ) {
   anime({
@@ -195,9 +223,6 @@ function slideReveal(targ) {
     translateY: [sh,0]
   });
 } ;
-
-/*CODING*/
-
 
 
 
